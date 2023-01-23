@@ -1,0 +1,48 @@
+<div  class="container">
+
+    <button mat-button color="primay" (click)="openUnidade(null)">Adicionar Unidade</button>
+    <button class="butaobuscar" mat-button color="primay" > Buscar unidades por Cep</button>
+
+
+    <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        
+        <ng-container matColumnDef="cnes">
+        <th mat-header-cell *matHeaderCellDef> CNES </th>
+        <td mat-cell *matCellDef="let element"> {{element.cnes}} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="nomeDoEstabelecimento">
+        <th mat-header-cell *matHeaderCellDef> Nome do Estabelecimento </th>
+        <td mat-cell *matCellDef="let element"> {{element.nomeDoEstabelecimento}} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="cepInicio">
+        <th mat-header-cell *matHeaderCellDef> Faixa de CEP de inicio</th>
+        <td mat-cell *matCellDef="let element"> {{element.cepInicio}} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="cepFim">
+        <th mat-header-cell *matHeaderCellDef> Faixa de CEP de Fim </th>
+        <td mat-cell *matCellDef="let element"> {{element.cepFim}} </td>
+        </ng-container>
+         
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-icon-button (click)="editUnidade(element)" color="primary" >
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteUnidade(element.cnes)" color="primary">
+                    <mat-icon>delete</mat-icon>
+                </button> 
+             </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
